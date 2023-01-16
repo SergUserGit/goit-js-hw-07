@@ -39,5 +39,15 @@ function onGalleryDivClick(event) {
     return;
   }
 
-  console.log(event.target.dataset.source);
+  const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" width="800" height="600">
+`);
+
+  instance.show();
+
+  elemGallery.addEventListener("keydown", (evt) => {
+    if (evt.code === "Escape") {
+      instance.close();
+    }
+  });
 }
